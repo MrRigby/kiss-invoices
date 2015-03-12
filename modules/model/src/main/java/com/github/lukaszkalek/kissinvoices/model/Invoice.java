@@ -21,31 +21,35 @@ public class Invoice {
 		return id;
 	}
 
-	public void withId(Optional<Long> id) {
+	public Invoice withId(Optional<Long> id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getNumber() {
 		return number;
 	}
 
-	public void withNumber(String number) {
+	public Invoice withNumber(String number) {
 		this.number = number;
+		return this;
 	}
 
 	public Purchaser getPurchaser() {
 		return purchaser;
 	}
 
-	public void withPurchaser(Purchaser purchaser) {
+	public Invoice withPurchaser(Purchaser purchaser) {
 		this.purchaser = purchaser;
+		return this;
 	}
 
 	public List<InvoicePosition> getPositions() {
 		return positions;
 	}
 
-	public void withPositions(List<InvoicePosition> positions) {
+	public Invoice withPositions(List<InvoicePosition> positions) {
 		this.positions = positions;
+		return this;
 	}
 }

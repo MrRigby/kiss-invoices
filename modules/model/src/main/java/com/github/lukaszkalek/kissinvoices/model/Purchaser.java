@@ -20,32 +20,36 @@ public class Purchaser {
 		return id;
 	}
 
-	public void setId(Optional<Long> id) {
+	public Purchaser withId(Optional<Long> id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Purchaser withName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public Purchaser withAddress(String address) {
 		this.address = address;
+		return this;
 	}
 
 	public String getTaxIdentifier() {
 		return taxIdentifier;
 	}
 
-	public void setTaxIdentifier(String taxIdentifier) {
+	public Purchaser withTaxIdentifier(String taxIdentifier) {
 		this.taxIdentifier = taxIdentifier;
+		return this;
 	}
 
 }
