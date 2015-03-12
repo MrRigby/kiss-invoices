@@ -1,9 +1,11 @@
-package pl.jdeveloper.kiss.invoices.service
+package com.github.lukaszkalek.kissinvoices.service
 
 import spock.lang.Specification
 
 import com.github.lukaszkalek.kissinvoices.model.Invoice
 import com.github.lukaszkalek.kissinvoices.repository.InvoiceRepository
+import com.github.lukaszkalek.kissinvoices.service.InvoiceService;
+import com.github.lukaszkalek.kissinvoices.service.InvoiceServiceImpl;
 
 class InvoiceServiceSpec extends Specification {
 
