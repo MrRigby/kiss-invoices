@@ -4,10 +4,12 @@ import com.github.lukaszkalek.kissinvoices.model.Invoice;
 import com.github.lukaszkalek.kissinvoices.repository.InvoiceRepository;
 import com.google.common.base.Preconditions;
 
+//@Service
 public class InvoiceServiceImpl implements InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
 
+    //s@Autowired
     public InvoiceServiceImpl(InvoiceRepository invoiceRepository) {
         this.invoiceRepository = invoiceRepository;
     }

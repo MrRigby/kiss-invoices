@@ -5,9 +5,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import com.github.lukaszkalek.kissinvoices.rest.config.RestConfig;
+import com.github.lukaszkalek.kissinvoices.service.config.ServiceConfig;
 
 @EnableAutoConfiguration
-@Import({RestConfig.class})
+@Import({RestConfig.class, ServiceConfig.class})
 public class Application {
 
 	public static void main(String[] args) {
