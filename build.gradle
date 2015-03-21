@@ -1,25 +1,33 @@
 buildscript {
 	ext {
-		spockVersion = '1.0-groovy-2.3'
-		groovyVersion = '2.3.10'
-		
-		springFrameworkVersion = '4.1.4.RELEASE'
-		springDataVersion = '1.0.0.RELEASE'
+		spockVersion = "1.0-groovy-2.3"
+		groovyVersion = "2.3.10"
+		springFrameworkVersion = "4.1.4.RELEASE"
+		springDataVersion = "1.0.0.RELEASE"
 	}
 	
     repositories {
-        maven { url 'https://repo.spring.io/libs-release' }
+        maven { url "https://repo.spring.io/libs-release" }
         mavenLocal()
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE"
+		classpath "org.flywaydb:flyway-gradle-plugin:3.2.1"
+		classpath "com.h2database:h2:1.4.185"
     }
+}
+
+// apply flyway plugin and configure one
+apply plugin: 'org.flywaydb.flyway'
+flyway {
+	url = "jdbc:h2:file:/tmp/db/kiss-invoices-testdb;FILE_LOCK=NO;"
+	user = "sa"
 }
 
 allprojects {
     repositories {
-        maven { url 'https://repo.spring.io/libs-release' }
+        maven { url "https://repo.spring.io/libs-release" }
         mavenLocal()
         mavenCentral()
     }
@@ -49,8 +57,27 @@ allprojects {
 }
 
 dependencies {
+	compile gradleApi()
+	compile localGroovy()
+
+	compile "org.apache.commons:commons-dbcp2:2.0"
+	compile "com.mysema.querydsl:querydsl-sql-codegen:3.6.2"
+
     compile project('modules:model')
     compile project('modules:repository')
     compile project('modules:service')
     compile project('modules:rest')
+}
+
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+sourceCompatibility = 1.8
+
+apply plugin: 'qClassesGeneratorPlugin'
+qClassesGeneratorCfg {
+	driverClassName = "org.h2.Driver"
+	url = "jdbc:h2:file:/tmp/db/kiss-invoices-testdb;FILE_LOCK=NO;"
+	user = "sa"
+	password = ""
+	targetFolder = file("${project.buildDir}/generated-sources/query-dsl")
 }
