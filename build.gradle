@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		spockVersion = "1.0-groovy-2.3"
-		groovyVersion = "2.3.10"
+		spockVersion = "1.0-groovy-2.4"
+		groovyVersion = "2.4.1"
 		springFrameworkVersion = "4.1.4.RELEASE"
 		springDataVersion = "1.0.0.RELEASE"
 	}
